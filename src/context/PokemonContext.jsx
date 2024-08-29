@@ -32,9 +32,23 @@ export const PokemonProvider = ({ children }) => {
   };
 
 
-  const removeFromBag = (pokemonId) => {
-    setBag(prevBag => prevBag.filter(pokemon => pokemon.id !== pokemonId));
+  const removeFromBag = (pokemonNameOrNickname) => {
+    setBag(prevBag => {
+      const indexToRemove = prevBag.findIndex(
+        pokemon => pokemon.name === pokemonNameOrNickname || pokemon.nickname === pokemonNameOrNickname
+      );
+  
+      if (indexToRemove !== -1) {
+        const newBag = [...prevBag];
+        newBag.splice(indexToRemove, 1);
+        return newBag;
+      }
+  
+      return prevBag;
+    });
   };
+  
+  
 
 
 
