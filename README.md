@@ -1,1 +1,1 @@
-pokedex... but 
+ not pokedex... but 
